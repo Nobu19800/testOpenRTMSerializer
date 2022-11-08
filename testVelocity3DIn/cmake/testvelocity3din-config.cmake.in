@@ -1,0 +1,54 @@
+# testVelocity3DIn CMake config file
+#
+# This file sets the following variables:
+# testVelocity3DIn_FOUND - Always TRUE.
+# testVelocity3DIn_INCLUDE_DIRS - Directories containing the testVelocity3DIn include files.
+# testVelocity3DIn_IDL_DIRS - Directories containing the testVelocity3DIn IDL files.
+# testVelocity3DIn_LIBRARIES - Libraries needed to use testVelocity3DIn.
+# testVelocity3DIn_DEFINITIONS - Compiler flags for testVelocity3DIn.
+# testVelocity3DIn_VERSION - The version of testVelocity3DIn found.
+# testVelocity3DIn_VERSION_MAJOR - The major version of testVelocity3DIn found.
+# testVelocity3DIn_VERSION_MINOR - The minor version of testVelocity3DIn found.
+# testVelocity3DIn_VERSION_REVISION - The revision version of testVelocity3DIn found.
+# testVelocity3DIn_VERSION_CANDIDATE - The candidate version of testVelocity3DIn found.
+
+message(STATUS "Found testVelocity3DIn-@PROJECT_VERSION@")
+set(testVelocity3DIn_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(testVelocity3DIn_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(testVelocity3DIn_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(testVelocity3DIn_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(testVelocity3DIn_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(testVelocity3DIn_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(testVelocity3DIn_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(testVelocity3DIn_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(testVelocity3DIn_VERSION @PROJECT_VERSION@)
+set(testVelocity3DIn_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(testVelocity3DIn_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(testVelocity3DIn_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(testVelocity3DIn_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

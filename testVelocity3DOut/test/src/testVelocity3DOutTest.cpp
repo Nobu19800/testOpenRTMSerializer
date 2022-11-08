@@ -1,0 +1,165 @@
+﻿// -*- C++ -*-
+// <rtc-template block="description">
+/*!
+ * @file  testVelocity3DOutTest.cpp
+ * @brief TimedVelocity3D type test component. (test code)
+ *
+ */
+// </rtc-template>
+
+#include "testVelocity3DOutTest.h"
+
+// Module specification
+// <rtc-template block="module_spec">
+#if RTM_MAJOR_VERSION >= 2
+static const char* const testvelocity3dout_spec[] =
+#else
+static const char* testvelocity3dout_spec[] =
+#endif
+  {
+    "implementation_id", "testVelocity3DOutTest",
+    "type_name",         "testVelocity3DOutTest",
+    "description",       "TimedVelocity3D type test component.",
+    "version",           "1.0.0",
+    "vendor",            "AIST",
+    "category",          "Test",
+    "activity_type",     "PERIODIC",
+    "kind",              "DataFlowComponent",
+    "max_instance",      "1",
+    "language",          "C++",
+    "lang_type",         "compile",
+    ""
+  };
+// </rtc-template>
+
+/*!
+ * @brief constructor
+ * @param manager Maneger Object
+ */
+testVelocity3DOutTest::testVelocity3DOutTest(RTC::Manager* manager)
+    // <rtc-template block="initializer">
+  : RTC::DataFlowComponentBase(manager),
+    m_outIn("out", m_out)
+
+    // </rtc-template>
+{
+}
+
+/*!
+ * @brief destructor
+ */
+testVelocity3DOutTest::~testVelocity3DOutTest()
+{
+}
+
+
+
+RTC::ReturnCode_t testVelocity3DOutTest::onInitialize()
+{
+  // Registration: InPort/OutPort/Service
+  // <rtc-template block="registration">
+  // Set InPort buffers
+  addInPort("out", m_outIn);
+  
+  // Set OutPort buffer
+  
+  // Set service provider to Ports
+  
+  // Set service consumers to Ports
+  
+  // Set CORBA Service Ports
+  
+  // </rtc-template>
+
+  // <rtc-template block="bind_config">
+  // </rtc-template>
+  
+  return RTC::RTC_OK;
+}
+
+/*
+RTC::ReturnCode_t testVelocity3DOutTest::onFinalize()
+{
+  return RTC::RTC_OK;
+}
+*/
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onStartup(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onShutdown(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onActivated(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onDeactivated(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+RTC::ReturnCode_t testVelocity3DOutTest::onExecute(RTC::UniqueId /*ec_id*/)
+{
+  return RTC::RTC_OK;
+}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onAborting(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onError(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onReset(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onStateUpdate(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+//RTC::ReturnCode_t testVelocity3DOutTest::onRateChanged(RTC::UniqueId /*ec_id*/)
+//{
+//  return RTC::RTC_OK;
+//}
+
+
+bool testVelocity3DOutTest::runTest()
+{
+    return true;
+}
+
+
+extern "C"
+{
+ 
+  void testVelocity3DOutTestInit(RTC::Manager* manager)
+  {
+    coil::Properties profile(testvelocity3dout_spec);
+    manager->registerFactory(profile,
+                             RTC::Create<testVelocity3DOutTest>,
+                             RTC::Delete<testVelocity3DOutTest>);
+  }
+  
+}
