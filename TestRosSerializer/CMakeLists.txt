@@ -17,10 +17,11 @@ if(NOT roscpp_FOUND)
 endif()
 
 #Boostの検出
-find_package(Boost COMPONENTS chrono filesystem system)
-if(NOT Boost_FOUND)
-	find_package(Boost REQUIRED COMPONENTS chrono filesystem signals system)
-endif()
+find_package(Boost REQUIRED)
+#find_package(Boost COMPONENTS chrono filesystem system)
+#if(NOT Boost_FOUND)
+#	find_package(Boost REQUIRED COMPONENTS chrono filesystem signals system)
+#endif()
 
 #インクルードディレクトリ、リンクディレクトリ、コンパイル時のフラグの設定
 include_directories(${OPENRTM_INCLUDE_DIRS})
